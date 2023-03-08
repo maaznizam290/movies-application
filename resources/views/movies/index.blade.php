@@ -1,6 +1,9 @@
 @extends('movies.layout')
 @section('content')
 <div class="wrapperdiv">
+  @if ($message = Session::get('success'))
+    <div class="alert alert-success text-center">{{$message}}</div>
+  @endif
 <table class="table">
         <thead>
           <tr>
@@ -24,9 +27,10 @@
         @endif
     </table> 
     <div class="d-flex">
-        <div class="mx-auto">
-            {!! $movies->links() !! ?}
-        </div>
+      <div class="mx-auto">
+        {!! $movies->links('pagination::simple-bootstrap-4') !!}
+      </div>
+    </div>
     </div>
     </div>
       @endsection
